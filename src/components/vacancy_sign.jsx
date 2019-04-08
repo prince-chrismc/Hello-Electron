@@ -12,9 +12,16 @@ class Square extends React.Component {
 }
 
 export class VacancySign extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isVacant: this.props.hasvacancy,
+    };
+  }
+
   render() {
     var text;
-    if (this.props.hasvacancy) {
+    if (this.state.isVacant) {
       text = 'Vacancy';
     } else {
       text = 'No Vacancy';
