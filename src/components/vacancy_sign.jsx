@@ -1,7 +1,17 @@
 import React from 'react';
 import { MessageComponent } from './message'
 
-export class VacancySign extends React.Component{
+class Square extends React.Component {
+  render() {
+    return (
+      <button onClick={() => console.log('click')}>
+        {this.props.children}
+      </button>
+    );
+  }
+}
+
+export class VacancySign extends React.Component {
   render() {
     var text;
     if (this.props.hasvacancy) {
@@ -9,6 +19,11 @@ export class VacancySign extends React.Component{
     } else {
       text = 'No Vacancy';
     }
-    return <MessageComponent message={text}/>;
+    return (
+      <div>
+        <MessageComponent message={text} />
+        <Square>Add Visitor</Square>
+      </div>
+    );
   }
 }
