@@ -1,10 +1,14 @@
 import React from 'react';
 import { MessageComponent } from './message'
+import ReactDOM from 'react-dom';
+import Button from '@material-ui/core/Button';
 
 const ToogleComponent = ({onToggle}) => {
   return (
     <div>
-      <button onClick={() => {onToggle("item")}}>Toggle</button>
+      <Button variant="contained" color="primary" onClick={() => {onToggle("item")}}>
+        Toggle
+      </Button>
     </div>
   );
  }
