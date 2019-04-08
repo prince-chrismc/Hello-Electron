@@ -1,15 +1,13 @@
 import React from 'react';
 import { MessageComponent } from './message'
 
-class Square extends React.Component {
-  render() {
-    return (
-      <button onClick={() => console.log('click')}>
-        {this.props.children}
-      </button>
-    );
-  }
-}
+const ToogleComponent = ({onToggle}) => {
+  return (
+    <div>
+      <button onClick={() => {onToggle("item")}}>Toggle</button>
+    </div>
+  );
+ }
 
 export class VacancySign extends React.Component {
   constructor(props) {
@@ -17,6 +15,13 @@ export class VacancySign extends React.Component {
     this.state = {
       isVacant: this.props.hasvacancy,
     };
+  }
+
+  toggle() {
+    this.setState((prevState) => (
+        this.state, 
+        { isVacant: !prevState.isVacant }
+    ));
   }
 
   render() {
@@ -29,7 +34,8 @@ export class VacancySign extends React.Component {
     return (
       <div>
         <MessageComponent message={text} />
-        <Square>Add Visitor</Square>
+        <hr/>
+        <ToogleComponent onToggle={this.toggle.bind(this)} />
       </div>
     );
   }
