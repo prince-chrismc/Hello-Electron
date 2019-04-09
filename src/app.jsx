@@ -1,8 +1,8 @@
 import React from 'react';
-import { VacancySign } from './components/vacancy_sign'
+import ClippedDrawer from './components/menu'
 
 export default class App extends React.Component {
   render() {
-    return <VacancySign hasvacancy={false} />;
+    return <ClippedDrawer />;
   }
 }
