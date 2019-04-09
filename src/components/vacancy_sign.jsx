@@ -3,6 +3,7 @@ import { MessageComponent } from './message'
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
+import ButtonAppBar from './app_bar'
 
 const ToogleComponent = ({ onToggle }) => {
   return (
@@ -38,6 +39,7 @@ export class VacancySign extends React.Component {
     }
     return (
       <div>
+        <ButtonAppBar />
         <Grid container spacing={24} justify="space-around" alignItems="center">
           <Grid item xs={10}>
             <h2>Motel Electify</h2>
