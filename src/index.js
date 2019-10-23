@@ -1,10 +1,11 @@
-import { app, BrowserWindow } from 'electron';
+import { app, BrowserWindow, Menu, Tray } from 'electron';
 import installExtension, { REACT_DEVELOPER_TOOLS } from 'electron-devtools-installer';
 import { enableLiveReload } from 'electron-compile';
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
-let mainWindow;
+let mainWindow = null;
+let appIcon = null;
 
 const isDevMode = process.execPath.match(/[\\/]electron/);
 
@@ -21,10 +22,25 @@ const createWindow = async () => {
   // and load the index.html of the app.
   mainWindow.loadURL(`file://${__dirname}/index.html`);
 
+  appIcon = new Tray(__dirname + '/assets/electron.png')
+  const contextMenu = Menu.buildFromTemplate([
+    { label: 'Item1', type: 'radio', checked: true },
+    { label: 'Item2', type: 'radio' },
+    { type: 'separator' },
+    { label: 'Tick Tock', type: 'normal' }
+  ])
+
+  appIcon.setToolTip('This is my test application.')
+  appIcon.on('right-click', () => {
+
+  })
+  // Call this again for Linux because we modified the context menu
+  appIcon.setContextMenu(contextMenu)
+
   // Open the DevTools.
   if (isDevMode) {
     await installExtension(REACT_DEVELOPER_TOOLS);
-    mainWindow.webContents.openDevTools();
+    // mainWindow.webContents.openDevTools();
   }
 
   // Emitted when the window is closed.
